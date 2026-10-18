@@ -1,6 +1,6 @@
 // Kawaii Paint — offline-capable service worker.
 // network-first for code (so updates land immediately), cache-first for fonts/icons.
-const CACHE = 'kawaii-paint-v2';
+const CACHE = 'kawaii-paint-v3';
 const ASSETS = [
   './',
   './index.html',

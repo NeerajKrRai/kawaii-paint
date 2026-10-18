@@ -20,6 +20,7 @@ function initPad() {
 function sizePad(fresh) {
   const stage = document.getElementById('stage');
   const r = stage.getBoundingClientRect();
+  if (!r.width || !r.height) return;   // stage hidden (e.g. Gallery open) — don't zero-out the canvas
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const prev = (!fresh && pad.width) ? pad.toDataURL() : null;
   pad.width = Math.round(r.width * dpr);
@@ -155,7 +156,10 @@ function buildTools() {
 }
 
 // ── save ──
+let _saving = false;
 function saveDrawing() {
+  if (_saving) return;                 // one save per tap-burst — no dupes / id collisions
+  _saving = true;
   const dataUrl = pad.toDataURL('image/png');
   const rec = {
     id: Date.now(),
@@ -165,5 +169,6 @@ function saveDrawing() {
   addDrawing(rec).then(() => {
     toast('✨ Saved to your gallery!');
     updateGalCount();
-  }).catch(() => toast('Hmm, could not save 😿'));
+  }).catch(() => toast('Hmm, could not save 😿'))
+    .finally(() => { _saving = false; });
 }

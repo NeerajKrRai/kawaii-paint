@@ -15,8 +15,9 @@
 <!-- ══ STUDIO ══ -->
 <div class="screen on" id="sStudio">
   <header class="bar top">
+    <a class="chip" href="/" title="All of Neeksha's apps">🏠 Apps</a>
     <div class="brand">🎨 Kawaii&nbsp;Paint</div>
-    <button class="chip" onclick="go('sGallery')">📁 My Gallery <span id="galCount"></span></button>
+    <button class="chip right" onclick="go('sGallery')">📁 Gallery <span id="galCount"></span></button>
   </header>
 
   <div class="stage" id="stage">
@@ -43,8 +44,9 @@
 <!-- ══ GALLERY ══ -->
 <div class="screen" id="sGallery">
   <header class="bar top">
-    <button class="chip" onclick="go('sStudio')">← Back to painting</button>
+    <button class="chip" onclick="go('sStudio')">← Painting</button>
     <div class="brand">📁 My Gallery</div>
+    <a class="chip right" href="/" title="All of Neeksha's apps">🏠 Apps</a>
   </header>
   <div class="gallery-wrap">
     <div class="grid" id="galGrid"></div>

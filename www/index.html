@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#2B2B2B">
+<title>🎨 Neeksha's Kawaii Paint</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ══ STUDIO ══ -->
+<div class="screen on" id="sStudio">
+  <header class="bar top">
+    <div class="brand">🎨 Kawaii&nbsp;Paint</div>
+    <button class="chip" onclick="go('sGallery')">📁 My Gallery <span id="galCount"></span></button>
+  </header>
+
+  <div class="stage" id="stage">
+    <canvas id="pad"></canvas>
+    <div class="kao-corner" id="kaoCorner">♪( ´∀｀)</div>
+  </div>
+
+  <div class="tools">
+    <div class="tool-row" id="colorRow"></div>
+    <div class="tool-row split">
+      <div class="group" id="sizeRow"></div>
+      <div class="group" id="stampRow"></div>
+    </div>
+    <div class="tool-row actions">
+      <button class="act" id="btnBrush" onclick="setTool('brush')" title="Brush">🖌️</button>
+      <button class="act" id="btnErase" onclick="setTool('erase')" title="Eraser">🧽</button>
+      <button class="act" onclick="undo()" title="Undo">↩️</button>
+      <button class="act" onclick="clearPad()" title="Start over">🗑️</button>
+      <button class="act go" onclick="saveDrawing()" title="Save to gallery">✨ Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ GALLERY ══ -->
+<div class="screen" id="sGallery">
+  <header class="bar top">
+    <button class="chip" onclick="go('sStudio')">← Back to painting</button>
+    <div class="brand">📁 My Gallery</div>
+  </header>
+  <div class="gallery-wrap">
+    <div class="grid" id="galGrid"></div>
+    <div class="empty" id="galEmpty" hidden>
+      <div class="ei">🎨</div>
+      <p>No paintings yet!<br>Make something wonderful and tap <b>✨ Save</b>.</p>
+      <button class="chip big" onclick="go('sStudio')">Start painting →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LIGHTBOX ══ -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lb-inner">
+    <img id="lbImg" alt="painting">
+    <div class="lb-date" id="lbDate"></div>
+    <div class="lb-actions">
+      <button class="chip" onclick="downloadCurrent()">⬇ Save picture</button>
+      <button class="chip danger" onclick="deleteCurrent()">🗑️ Delete</button>
+      <button class="chip" onclick="closeLightbox()">✦ Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/paint.js"></script>
+<script src="js/gallery.js"></script>
+<script src="js/app.js"></script>
+<script src="js/pwa.js"></script>
+</body>
+</html>
